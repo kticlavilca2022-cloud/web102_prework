@@ -41,21 +41,19 @@ function addGamesToPage(games) {
         // set the inner HTML using a template literal to display some info 
         // about each game
         gameDiv.innerHTML = `
-            <img src="${game.image}" alt="${game.name}" class="game-img" />
+            <img src="${game.img}" alt="${game.name}" class="game-img" />
             <h3>${game.name}</h3>
             <p>${game.description}</p>
-            <p><strong>Goal:</strong> ${game.goal}</p>
+            <p><strong>Goal:</strong> $${game.goal}</p>
         `;
 
         // append the game to the games-container
-        const gamesContainer = document.getElementById("games-container");
         gamesContainer.appendChild(gameDiv);
     }
 }
 
 // Call the function with the variable containing all the games
 addGamesToPage(GAMES_JSON);
-
 // later, we'll call this function using a different list of games
 
 
