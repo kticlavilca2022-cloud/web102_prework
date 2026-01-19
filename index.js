@@ -147,28 +147,46 @@ allBtn.addEventListener("click", showAllGames);
 // grab the description container
 const descriptionContainer = document.getElementById("description-container");
 
-// use filter or reduce to count the number of unfunded games
+// use filter to count the number of unfunded games
+const unfundedGamesCount = GAMES_JSON.filter(game => game.pledged < game.goal).length;
 
+// calculate the total amount raised across all games using reduce
+const totalRaised = GAMES_JSON.reduce((acc, game) => acc + game.pledged, 0);
 
 // create a string that explains the number of unfunded games using the ternary operator
-
+const displayStr = `A total of $${totalRaised.toLocaleString()} has been raised for ${GAMES_JSON.length} ${GAMES_JSON.length === 1 ? "game" : "games"}. 
+Currently, ${unfundedGamesCount} ${unfundedGamesCount === 1 ? "game remains" : "games remain"} unfunded. We need your help to fund these amazing projects!`;
 
 // create a new DOM element containing the template string and append it to the description container
+const paragraph = document.createElement("p");
+paragraph.innerHTML = displayStr;
+descriptionContainer.appendChild(paragraph);
+
 
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
  * Skills used: spread operator, destructuring, template literals, sort 
  */
 
+// this is to grab the containers for the top two games (help me remember what these two for lol) 
 const firstGameContainer = document.getElementById("first-game");
 const secondGameContainer = document.getElementById("second-game");
 
-const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
+// this is to sort the games by pledged amount in descending order
+const sortedGames = GAMES_JSON.sort((item1, item2) => {
     return item2.pledged - item1.pledged;
 });
 
 // use destructuring and the spread operator to grab the first and second games
+const [topGame, secondGame, ...otherGames] = sortedGames;
 
-// create a new element to hold the name of the top pledge game, then append it to the correct element
+// create a new element to hold the name and pledged amount of the top pledged game, then append it
+const topGameElement = document.createElement("p");
+topGameElement.innerHTML = `${topGame.name} - $${topGame.pledged.toLocaleString()}`; //lil bonus idea hehe
+firstGameContainer.appendChild(topGameElement);
 
-// do the same for the runner up item
+// do the same for the runner-up game
+const secondGameElement = document.createElement("p");
+secondGameElement.innerHTML = `${secondGame.name} - $${secondGame.pledged.toLocaleString()}`; //lil bonus idea hehe
+secondGameContainer.appendChild(secondGameElement);
+
