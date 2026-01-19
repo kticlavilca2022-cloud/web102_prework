@@ -1,10 +1,10 @@
-# WEB102 Prework - *Name of App Here*
+# WEB102 Prework - *Game Time!*
 
-Submitted by: **Your Name Here**
+Submitted by: **Kimberly Ticlavilca**
 
-**Name of your app** is a website for the company Sea Monster Crowdfunding that displays information about the games they have funded.
+**Game Time!** is a website for the company Sea Monster Crowdfunding that displays information about the games they have funded.
 
-Time spent: **X** hours spent in total
+Time spent: **5** hours spent in total
 
 ## Required Features
 
@@ -18,6 +18,10 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 * [ ] List anything else that you can get done to improve the app functionality!
+* [ ] Dynamic introduction string that uses the ternary operator to adjust grammar depending on the number of unfunded games.
+* [ ] Numbers formatted using toLocaleString() for readability (e.g., 100000 → 100,000).
+* [ ] Sorting of games by pledged amount to highlight top-funded games.
+* [ ] Could implement search functionality or hover effects on game cards for visual improvements.
 
 ## Video Walkthrough
 
@@ -34,11 +38,14 @@ GIF created with ...
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+- Keeping the DOM dynamically updated when filtering games. This required using a deleteChildElements() function to remove old game cards before adding new ones.
+- Ensuring the stats section updates dynamically with correct formatting and grammar using reduce(), filter(), and ternary operators.
+- Sorting games by pledged amount and grabbing the top two games using destructuring and the spread operator.
+- Ensuring images display correctly from local assets (./assets/...) and match each game object.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2026] [Kimberly Ticlavilca]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
